@@ -1,4 +1,4 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component,Input, OnInit,EventEmitter, Output } from '@angular/core';
 import { ToDoItem } from '../interfaces/todo-item';
 
 @Component({
@@ -6,15 +6,23 @@ import { ToDoItem } from '../interfaces/todo-item';
   template :`
   <div class="todo-item">
     {{ item.title }}
+    <button class="btn btn-red" (click)="removeItem()">
+      remove
+    </button>
   </div>
   `,
   styleUrls: ['./todo-item.component.scss']
 })
 export class TodoItemComponent implements OnInit {
   @Input() item : ToDoItem;
+  @Output() remove: EventEmitter<ToDoItem> = new EventEmitter<ToDoItem>();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  removeItem(): void {
+    this.remove.emit(this.item);
   }
 
 }
