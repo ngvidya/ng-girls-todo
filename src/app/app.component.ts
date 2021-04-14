@@ -13,6 +13,6 @@ import { ToDoItem } from './interfaces/todo-item';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'My To DO List APP';
+  title = `Vidya's To DO List APP`;
   
 }
